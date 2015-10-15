@@ -260,3 +260,18 @@ platform :android, :override_default => 'es'
 ## Contributing
 
 Please read the [contributing guide](https://github.com/mrmans0n/localio/blob/master/CONTRIBUTING.md).
+
+#### Issues
+
+You may get an error message while working on Windows 10. After installing and configuring Localio, and trying to execute it for the first time, it may not be able to access Google Drive. The console output is:
+
+>Logging in to Google Drive...
+Refreshing auth token...
+Error: #<Faraday::SSLError>
+Couldn't access Google Drive. Check your values for :client_id and :client_secret, and delete :access_token if present (you might need to refresh its value so please remove it)
+
+To solve this issue you have to download this file as .pem: [cacert.pem](http://curl.haxx.se/ca/cacert.pem) and store it in C:\railsinstaller.
+
+Then create a system variable with name: SSL_CERT_FILE, and value: C:\railsinstaller\cacert.pem
+
+After doing this close all command prompts and try again, it should work.
